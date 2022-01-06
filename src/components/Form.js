@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
 const Container = styled.View`
@@ -26,8 +26,12 @@ const Form = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
+  const refName = useRef(null);
+  const refEmail = useRef(null);
+
   useEffect(() => {
     console.log('\n==== form component mount ====\n');
+    refName.current.focus();
     return () => console.log('\n==== form component unmount ====\n');
   }, []);
 
@@ -40,14 +44,19 @@ const Form = () => {
       <StyledText>Name: {name}</StyledText>
       <StyledText>Email: {email}</StyledText>
       <StyledTextInput
+        ref={refName}
         value={name}
         onChangeText={text => setName(text)}
         placeholder="name"
+        onSubmitEditing={() => refEmail.current.focus()}
+        returnKeyType="next"
       />
       <StyledTextInput
+        ref={refEmail}
         value={email}
         onChangeText={text => setEmail(text)}
         placeholder="email"
+        returnKeyType="done"
       />
     </Container>
   );

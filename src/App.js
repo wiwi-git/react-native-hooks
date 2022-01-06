@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import Button from './components/Button';
+import Dog from './components/Dog';
 // import Counter from './components/Counter';
 import Form from './components/Form';
+import Length from './components/Length';
 
 const Container = styled.View`
   flex: 1;
@@ -16,11 +18,13 @@ const App = () => {
   return (
     <Container>
       {/* <Counter /> */}
-      <Button
+      {/* <Button
         title={isVisible ? 'Hide' : 'Show'}
         onPress={() => setIsVisible(prev => !prev)}
       />
-      {isVisible && <Form />}
+      {isVisible && <Form />} */}
+      {/* <Length /> */}
+      <Dog />
     </Container>
   );
 };
